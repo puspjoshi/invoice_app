@@ -37,6 +37,11 @@
         axios.get('/api/delete_invoice/'+id);
         router.push('/');
     }
+    const downloadInvoice = (id) =>{
+
+        axios.get('/api/download_invoice/'+id+'/download');
+        router.push('/');
+    }
     const format_date = (value)=>{
         if (value) {
             return moment(String(value)).format('YYYY-MM-DD: h:mm:ss a')
@@ -194,9 +199,9 @@
 
                 </div>
                 <div>
-                    <a class="btn btn-secondary">
-                        Save
-                    </a>
+                    <button @click="downloadInvoice(form.id)" class="btn btn-secondary">
+                        Download
+                    </button>
                 </div>
             </div>
 

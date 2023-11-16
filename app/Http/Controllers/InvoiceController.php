@@ -7,6 +7,8 @@ use App\Models\InvoiceItem;
 use Illuminate\Http\Request;
 use App\Models\Invoice;
 use Illuminate\Validation\Rules\In;
+use Spatie\Browsershot\Browsershot;
+use Spatie\Browsershot\Exceptions\CouldNotTakeBrowsershot;
 
 class InvoiceController extends Controller
 {
@@ -142,5 +144,23 @@ class InvoiceController extends Controller
 
             InvoiceItem::create($itemData);
         }
+    }
+
+    public function download_invoice($id){
+        $invoice = $this->get_invoice_by_id($id);
+       $html = view('invoice_show',[
+           'invoice' => $invoice
+       ])->render();
+
+        try {
+
+            Browsershot::html($html)
+                ->setIncludePath('$PATH:/home/pusp/.nvm/versions/node/v20.5.1/bin')
+                ->showBackground()
+                ->save('test.pdf');
+        } catch (CouldNotTakeBrowsershot $e) {
+            dd($e->getMessage());
+        }
+        return "done";
     }
 }

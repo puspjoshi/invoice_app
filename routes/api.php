@@ -42,3 +42,5 @@ Route::get('/delete_invoice_items/{id}',[InvoiceController::class, 'delete_invoi
 Route::post('/update_invoice/{id}',[InvoiceController::class, 'update_invoice']);
 
 Route::get('/delete_invoice/{id}',[InvoiceController::class, 'delete_invoice']);
+
+Route::get('/download_invoice/{id}/download', [InvoiceController::class,'download_invoice']);
