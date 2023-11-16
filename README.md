@@ -9,6 +9,8 @@ Invoice app is developed in Laravel and Vuejs. It can be used to create invoice 
 - Database and Factory for dummy data.
 - To see demo please install the app.
 - Invoice pagination for large scale list
+- Download Invoice
+- Attach in email and send to client
 
 
 ## Installing invoice app
@@ -28,3 +30,4 @@ To create dummy data, inside tinker following command can be executed.
 ## Authentication
 
 There is no login system so it can be publically access by all, if you need authentication you can keep laravel breeze. you also can contact me.
+
